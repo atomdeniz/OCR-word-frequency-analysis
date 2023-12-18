@@ -3,23 +3,9 @@ from collections import Counter
 import pytesseract
 from PIL import Image
 import enchant
-from googletrans import Translator
 import re
 
 output_file_path = "./output.txt"
-output_translated_file_path = "./output_translated.txt"
-def translate_word(word):
-    """
-    Translate the given English word to Turkish.
-    """
-    translator = Translator()
-    try:
-        translated = translator.translate(word, src='en', dest='tr')
-        return translated.text
-    except Exception as e:
-        print(f"Error translating {word}: {e}")
-        return word
-
 
 def is_image_file(file_path):
     """
@@ -92,8 +78,6 @@ def main(base_dir):
     process_directory(base_dir, all_words)
 
     
-
-
 if __name__ == "__main__":
     base_dir = input("Enter the base directory: ")
     main(base_dir)
